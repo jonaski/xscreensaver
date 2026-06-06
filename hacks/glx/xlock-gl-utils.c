@@ -66,6 +66,11 @@ init_GL(ModeInfo * mi)
 # endif
 
   mi->glx_context = openGL_context_for_window (screen, window);
+  if (! mi->glx_context)
+    {
+      fprintf (stderr, "%s: couldn't create GL context\n", progname);
+      exit (1);
+    }
 
   /* Process the -background argument. */
   {
